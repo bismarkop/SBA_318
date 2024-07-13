@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
 
+app.set("view engine", "ejs")
+
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
@@ -19,7 +21,7 @@ ${time.toLocaleTimeString()}: Received a ${req.method} request to ${req.url}.`);
 });
 
 app.get("/", (req, res) => {
-  res.send("<h1>Expense Tracker</h1>");
+  res.render("index");
 });
 
 app.listen(port, () => {

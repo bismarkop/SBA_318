@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Expense Tracker</h1>
+
+    <main>
+      <div id="header">
+        <div>
+          <h5>Balance</h5>
+          <span id="balance">$0.00</span>
+        </div>
+        <div>
+          <h5>Expense</h5>
+          <span id="expense">$0.00</span>
+        </div>
+        <div>
+          <h5>Income</h5>
+          <span id="income">$0.00</span>
+        </div>
+      </div>
+
+      <div id="form-section">
+        <form action="/form-handling-page" method="post">
+          <section>
+            <div>
+              <label for="name">Name (Expense or Income):</label>
+              <input type="text" id="name" name="expense_income" required />
+            </div>
+
+            <div>
+              <label for="amount">Amount:</label>
+              <input
+                type="number"
+                name="amount"
+                value="0"
+                min=".01"
+                step=".01"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="date">Date:</label>
+              <input type="date" name="date" required />
+            </div>
+            <button type="submit" id="submitBtn">Submit</button>
+          </section>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
