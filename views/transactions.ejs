@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+
+    <section id="transactions">
+      <h3>Transactions</h3>
+      <ul id="transactionList"></ul>
+      <div id="status"></div>
+    </section>
+
+    <div>Transaction Name: <span id="expenseOrIncome"></span></div>
+    <div>Amount: <span id="amount"></span></div>
+    <div>Date: <span id="date"></span></div>
+
+    <script>
+      let expOrInc = sessionStorage.getItem("exp-or-inc");
+      let amountEntered = sessionStorage.getItem("enteredAmount");
+      let dateOf = sessionStorage.getItem("addDate");
+      
+      document.getElementById("expenseOrIncome").textContent = expOrInc
+      document.getElementById("amount").textContent = amountEntered
+      document.getElementById("date").textContent = dateOf
+
+    // console.log(JSON.parse(sessionStorage.getItem("transactionInfo")))
+    
+
+    </script>
+  </body>
+</html>

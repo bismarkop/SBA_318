@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="./public/styles.css" />
     <title>Document</title>
   </head>
   <body>
@@ -16,7 +16,7 @@
           <span id="balance">$0.00</span>
         </div>
         <div>
-          <h5>Expense</h5>
+          <h5>Expenses</h5>
           <span id="expense">$0.00</span>
         </div>
         <div>
@@ -25,34 +25,36 @@
         </div>
       </div>
 
-      <div id="form-section">
-        <form action="/form-handling-page" method="post">
-          <section>
-            <div>
-              <label for="name">Name (Expense or Income):</label>
-              <input type="text" id="name" name="expense_income" required />
-            </div>
+      <section>
+        <h3>Add Transaction</h3>
+        <form id="transactionForm" >
+          <!-- action="/form-handling-page" method="post" -->
 
-            <div>
-              <label for="amount">Amount:</label>
-              <input
-                type="number"
-                name="amount"
-                value="0"
-                min=".01"
-                step=".01"
-                required
-              />
-            </div>
+          <div>
+            <label for="name">Name of expense or income:</label>
+            <input type="text" id="name" name="expense_income" required />
+          </div>
 
-            <div>
-              <label for="date">Date:</label>
-              <input type="date" name="date" required />
-            </div>
-            <button type="submit" id="submitBtn">Submit</button>
-          </section>
+          <div>
+            <label for="amount">Amount:</label>
+            <input
+              type="number"
+              name="amount"
+              value="0"
+              min=".01"
+              step=".01"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="date">Date:</label>
+            <input type="date" name="date" required />
+          </div>
+          <button type="submit" id="submitBtn">Submit</button>
+
         </form>
-      </div>
+      </section>
     </main>
   </body>
 </html>
