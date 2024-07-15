@@ -80,9 +80,17 @@ form div:nth-child(n + 2) {
 }
 
 #transactions {
+  display: flex;
+  flex-direction: column;
   height: auto;
   max-height: 500px;
   width: 50%;
   overflow: auto;
   border: 5px solid rgb(0, 110, 2);
+  text-align: center;
+  
+}
+
+#transactionList {
+  list-style-type: none;
 }
