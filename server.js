@@ -6,6 +6,7 @@ const port = 3000;
 app.set("view engine", "ejs")
 
 app.use("/public", express.static("public"))
+app.use("/src", express.static("src"))
 app.use(bodyParser.json());
 
 
