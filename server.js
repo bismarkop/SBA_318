@@ -5,7 +5,7 @@ const port = 3000;
 
 app.set("view engine", "ejs")
 
-app.use(express.static("public"))
+app.use("/public", express.static("public"))
 app.use(bodyParser.json());
 
 
@@ -23,11 +23,21 @@ ${time.toLocaleTimeString()}: Received a ${req.method} request to ${req.url}`);
 });
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("test");
 });
 
 app.get("/transactions", (req, res) => {
   res.render("transactions");
+});
+
+app.use((req, res) => {
+  res.status(404);
+  res.json({ error: "Resource Not Found" });
+});
+
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+  res.json({ error: err.message });
 });
 
 app.listen(port, () => {
