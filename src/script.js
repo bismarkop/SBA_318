@@ -64,7 +64,7 @@ function addTransaction(e) {
   renderList();
 }
 
-function deleteTransaction() {
+function deleteTransaction(id) {
   let index = transactions.findIndex((trans) => trans.id === id);
   transactions.splice(index, 1);
 
@@ -76,4 +76,8 @@ function saveTransaction() {
   transactions.sort((a, b) => new Date(a.date) - new Date(b.date));
 
   sessionStorage.setItem("transactions", JSON.stringify(transactions));
+}
+
+function dateConverter() {
+  
 }
