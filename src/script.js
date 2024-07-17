@@ -25,26 +25,34 @@ function renderList() {
     const li = document.createElement("li");
 
     li.innerHTML = `
-            <p>${new Date(date).toLocaleDateString()}</p>
-            <div class = "name">
-              <h4>${name}</h4>
+            <div id = "transactionInfo">
+              <h3>Transactions</h3>
+              <p>${new Date(date).toLocaleDateString()}</p>
+              <div class = "name">
+                <h4>${name}</h4>
+              </div>
+              <div class="amount ${type}">
+                <span>${formatter.format(amount * sign)}</span>
+              </div>
+
+              <div class="action">
+              <svg width="150" height="100" xmlns="http://www.w3.org/2000/svg" onclick="deleteTransaction(${id})">
+                <circle cx="75" cy="50" r="20" fill="red" />
+                <text x="75" y="60" font-size="30" text-anchor="middle" fill="white">X</text>
+                Sorry, your browser does not support inline SVG.  
+              </svg> 
             </div>
-            <div class="amount ${type}">
-              <span>${formatter.format(amount * sign)}</span>
             </div>
-            <div class="action">
-            <svg width="150" height="100" xmlns="http://www.w3.org/2000/svg" onclick="deleteTransaction(${id})">
-              <circle cx="75" cy="50" r="20" fill="red" />
-              <text x="75" y="60" font-size="30" text-anchor="middle" fill="white">X</text>
-              Sorry, your browser does not support inline SVG.  
-            </svg> 
-      </div>
+
+            
+      
           `;
     list.appendChild(li);
   });
 }
 
 renderList();
+updateTotal();
 
 function addTransaction(e) {
   e.preventDefault();
@@ -62,6 +70,7 @@ function addTransaction(e) {
   this.reset();
   saveTransaction();
   renderList();
+  updateTotal();
 }
 
 function deleteTransaction(id) {
@@ -70,6 +79,7 @@ function deleteTransaction(id) {
 
   saveTransaction();
   renderList();
+  updateTotal();
 }
 
 function saveTransaction() {
@@ -78,6 +88,18 @@ function saveTransaction() {
   sessionStorage.setItem("transactions", JSON.stringify(transactions));
 }
 
-function dateConverter() {
-  
+function updateTotal() {
+  let incomeTotal = transactions
+    .filter((trans) => trans.type === "income")
+    .reduce((total, trans) => total + trans.amount, 0);
+
+  let expenseTotal = transactions
+    .filter((trans) => trans.type === "expense")
+    .reduce((total, trans) => total + trans.amount, 0);
+
+  let balanceTotal = incomeTotal - expenseTotal;
+
+  balance.textContent = formatter.format(balanceTotal).substring(1);
+  income.textContent = formatter.format(incomeTotal);
+  expense.textContent = formatter.format(expenseTotal * -1);
 }
