@@ -77,14 +77,6 @@ input#type:checked ~ .option::before {
   left: 50%;
 }
 
-.option #inc:hover, #inc:focus {
-  background-color: rgb(127, 171, 138);
-}
-
-.option #exp:hover, #exp:hover {
-  background-color: rgb(127, 171, 138);
-}
-
 .name {
   flex: 1;
 }
@@ -174,7 +166,7 @@ form div:nth-child(n + 3) {
 input#type {
   appearance: none;
   position: absolute;
-  /* display: none; */
+  display: none;
 }
 
 #submitBtn {
@@ -216,6 +208,7 @@ svg {
   position: relative;
   left: 100px;
   bottom: 85px;
+  cursor: pointer;
 }
 
 div.action {

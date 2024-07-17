@@ -17,18 +17,6 @@
     <div>Amount: <span id="amount"></span></div>
     <div>Date: <span id="date"></span></div>
 
-    <script>
-      let expOrInc = sessionStorage.getItem("exp-or-inc");
-      let amountEntered = sessionStorage.getItem("enteredAmount");
-      let dateOf = sessionStorage.getItem("addDate");
-      
-      document.getElementById("expenseOrIncome").textContent = expOrInc
-      document.getElementById("amount").textContent = amountEntered
-      document.getElementById("date").textContent = dateOf
-
-    // console.log(JSON.parse(sessionStorage.getItem("transactionInfo")))
-    
-
-    </script>
+    <script src="../src/script.js"></script>
   </body>
 </html>
