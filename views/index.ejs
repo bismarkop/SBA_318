@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../public/styles.css" />
+
     <title>Document</title>
   </head>
   <body>
@@ -28,11 +29,20 @@
       <section>
         <h3>Add Transaction</h3>
         <form id="transactionForm">
-          <!-- action="/form-handling-page" method="post" -->
+
+          <div>
+            <label for="type">
+              <input id="type" type="checkbox" name="type">
+              <div class="option">
+                <span id="exp">Expense</span>
+                <span id="inc">Income</span>
+              </div>
+            </label>
+          </div>
 
           <div>
             <label for="name">Name of expense or income:</label>
-            <input type="text" id="name" name="expense-income" required />
+            <input type="text" id="name" name="name" required />
           </div>
 
           <div>
@@ -42,8 +52,7 @@
               type="number"
               name="amount"
               value="0"
-              min=".01"
-              step=".01"
+              step="1"
               required
             />
           </div>
@@ -57,48 +66,11 @@
       </section>
     </main>
 
-    <script>
-      const form = document.getElementById("transactionForm");
-      const nameOf = document.getElementById("name");
-      const amount = document.getElementById("amount");
-      const date = document.getElementById("date");
+    <section id="transactions">
+      <ul id="transactionList"></ul>
+      <div id="status"></div>
+    </section>
 
-      const transactions = [];
-
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        let expOrInc = nameOf.value;
-        let amountEntered = amount.value;
-        let dateOf = date.value;
-
-        sessionStorage.setItem("exp-or-inc", expOrInc);
-        sessionStorage.setItem("enteredAmount", amountEntered);
-        sessionStorage.setItem("addDate", dateOf);
-
-        // Keeping this for possible future use of JSON for data manipulation
-        // sessionStorage.setItem("transactionInfo", JSON.stringify({
-        //   transactionName: expOrInc,
-        //   amount: amountEntered,
-        //   date: dateOf,
-        // }));
-
-        let newEntry = addTransactions(expOrInc, amountEntered, dateOf);
-        console.log(newEntry);
-        
-
-        function addTransactions(nameInput, amount, dateAdded) {
-          let transactionObj = {};
-          transactionObj["transactioname"] = nameInput;
-          transactionObj["transactionAmount"] = amount;
-          transactionObj["dateOfTransaction"] = dateAdded;
-
-          transactions.push(transactionObj);
-          return transactionObj;
-        }
-
-        window.location.href = "transactions";
-      });
-    </script>
+    <script src="../src/script.js"></script>
   </body>
 </html>

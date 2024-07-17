@@ -25,7 +25,7 @@ ${time.toLocaleTimeString()}: Received a ${req.method} request to ${req.url}`);
 });
 
 app.get("/", (req, res) => {
-  res.render("test");
+  res.render("index");
 });
 
 app.get("/transactions", (req, res) => {
