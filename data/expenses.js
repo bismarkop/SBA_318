@@ -21,3 +21,5 @@ const expenses = [
         date: "7/6/2024",
     }
 ]
+
+module.exports = expenses

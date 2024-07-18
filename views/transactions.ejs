@@ -3,19 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="../public/styles.css" />
+    <title>Transactions</title>
   </head>
   <body>
+
+    <div class="topnav">
+      <a class="active" href="/">Home</a>
+      <a href="/transactions/expenses">Expenses</a>
+      <a href="/transactions/income">Income</a>
+    </div>
 
     <section id="transactions">
       <h3>Transactions</h3>
       <ul id="transactionList"></ul>
       <div id="status"></div>
     </section>
-
-    <div>Transaction Name: <span id="expenseOrIncome"></span></div>
-    <div>Amount: <span id="amount"></span></div>
-    <div>Date: <span id="date"></span></div>
 
     <script src="../src/script.js"></script>
   </body>
