@@ -1,4 +1,4 @@
-const income = [
+const incomes = [
     {
         id: 1,
         name: "Weekly Income",
@@ -19,4 +19,4 @@ const income = [
     }
 ]
 
-module.exports = income;
+module.exports = incomes;

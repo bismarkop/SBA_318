@@ -32,7 +32,7 @@ ${time.toLocaleTimeString()}: Received a ${req.method} request to ${req.url}`);
 });
 
 app.use("/transactions/expenses", expenses)
-app.use("/transactions/income", income)
+app.use("/transactions/incomes", incomes)
 
 app.get("/", (req, res) => {
   res.render("index");

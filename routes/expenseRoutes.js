@@ -11,7 +11,7 @@ router
   .post((req, res) => {
     if (req.body.id && req.body.name && req.body.amount && req.body.date) {
       const expense = {
-        id: expense[expense.length - 1].id +1,
+        id: expenses[expenses.length - 1].id + 1,
         name: req.body.name,
         amount: req.body.amount,
         date: req.body.date,
@@ -22,6 +22,15 @@ router
     }
     else res.json({ error: "Insufficient Data" });
   })
+
+router
+  .route("/:id")
+  .get((req, res, next) => {
+    const expense = expenses.find((e) => e.id == req.params.id);
+    if (expense) res.json(expense);
+    else next();
+  })
+  
 
 
 module.exports = router;
