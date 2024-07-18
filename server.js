@@ -1,8 +1,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+
+const expenses = require("./routes/expenseRoutes")
+const income = require("./routes/incomeRoutes")
+
 const app = express();
-const router = express.Router();
 const port = 3000;
+
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ extended: true }));
 
 app.set("view engine", "ejs")
 
@@ -23,6 +30,9 @@ ${time.toLocaleTimeString()}: Received a ${req.method} request to ${req.url}`);
   }
   next();
 });
+
+app.use("transactions/expenses", expenses)
+app.use("transactions/income", income)
 
 app.get("/", (req, res) => {
   res.render("index");
