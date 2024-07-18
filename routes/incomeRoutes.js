@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const income = require("../data/incomes");
+const incomes = require("../data/incomes");
 
 router
   .route("/")
   .get((req, res) => {
-    res.json(income);
+    res.json(incomes);
   })
   .post((req, res) => {
     if (req.body.id && req.body.name && req.body.amount && req.body.date) {
@@ -18,7 +18,7 @@ router
       };
 
       incomes.push(income);
-      res.json(income[income.length - 1]);
+      res.json(incomes[incomes.length - 1]);
     }
     else res.json({ error: "Insufficient Data" });
   })

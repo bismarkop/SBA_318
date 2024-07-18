@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const expenses = require("./routes/expenseRoutes")
-const income = require("./routes/incomeRoutes")
+const incomes = require("./routes/incomeRoutes")
 
 const app = express();
 const port = 3000;
