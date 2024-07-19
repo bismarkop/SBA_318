@@ -1,6 +1,6 @@
 # Expense Tracker 
 
-This is web appliction built using Node.js and Express.js and allows the user to track their income and expenses. 
+This web was application built using Node.js and Express.js and allows the user to track their income and expenses. 
 It exhibits 
 * REST API principles
 * Creating middleware
