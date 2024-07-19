@@ -30,6 +30,19 @@ router
     if (income) res.json(income);
     else next();
   })
+  .patch((req, res, next) => {
+    const income = incomes.find((inc, i) => {
+      if (inc.id == req.params.id) {
+        for (const key in req.body) {
+          incomes[i][key] = req.body[key];
+        }
+        return true;
+      }
+    });
+
+    if (income) res.json(income);
+    else next();
+  })
   .delete((req, res, next) => {
     const income = incomes.find((e, i) => {
       if (e.id == req.params.id) {
