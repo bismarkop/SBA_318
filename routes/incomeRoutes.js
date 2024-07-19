@@ -32,7 +32,7 @@ router
   })
   .delete((req, res, next) => {
     const income = incomes.find((e, i) => {
-      if (e.id === req.params.id) {
+      if (e.id == req.params.id) {
         incomes.splice(i, 1);
         return true;
       }
