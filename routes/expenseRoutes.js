@@ -41,15 +41,5 @@ router
     else next();
   });
 
-// router.delete("/:id", (req, res, next) => {
-//   const expense = expenses.find((e, i) => {
-//     if (e.id === req.params.id) {
-//       expenses.splice(i, 1);
-//       return true;
-//     }
-//   });
 
-//   if (expense) res.json(expense);
-//   else next();
-// });
 module.exports = router;
