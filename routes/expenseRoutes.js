@@ -9,7 +9,7 @@ router
     res.json(expenses);
   })
   .post((req, res) => {
-    if (req.body.id && req.body.name && req.body.amount && req.body.date) {
+    if (req.body.name && req.body.amount && req.body.date) {
       const expense = {
         id: expenses[expenses.length - 1].id + 1,
         name: req.body.name,
@@ -38,7 +38,18 @@ router
     });
 
     if (expense) res.json(expense);
-    else next()
+    else next();
   });
 
+router.delete(":id", (req, res) => {
+  const expense = expenses.find((e, i) => {
+    if (e.id === req.params.id) {
+      expenses.splice(i, 1);
+      return true;
+    }
+  });
+
+  if (expense) res.json(expense);
+  else next();
+});
 module.exports = router;
