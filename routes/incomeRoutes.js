@@ -30,5 +30,16 @@ router
     if (income) res.json(income);
     else next();
   })
+  .delete((req, res, next) => {
+    const income = incomes.find((e, i) => {
+      if (e.id === req.params.id) {
+        incomes.splice(i, 1);
+        return true;
+      }
+    });
+
+    if (income) res.json(income);
+    else next()
+  });
   
 module.exports = router;

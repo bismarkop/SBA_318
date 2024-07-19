@@ -19,9 +19,8 @@ router
 
       expenses.push(expense);
       res.json(expenses[expenses.length - 1]);
-    }
-    else res.json({ error: "Insufficient Data" });
-  })
+    } else res.json({ error: "Insufficient Data" });
+  });
 
 router
   .route("/:id")
@@ -30,7 +29,16 @@ router
     if (expense) res.json(expense);
     else next();
   })
-  
+  .delete((req, res, next) => {
+    const expense = expenses.find((e, i) => {
+      if (e.id === req.params.id) {
+        expenses.splice(i, 1);
+        return true;
+      }
+    });
 
+    if (expense) res.json(expense);
+    else next()
+  });
 
 module.exports = router;
