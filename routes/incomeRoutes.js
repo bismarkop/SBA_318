@@ -6,7 +6,8 @@ const incomes = require("../data/incomes");
 router
   .route("/")
   .get((req, res) => {
-    res.json(incomes);
+    // res.json(incomes); // Keeping this here for future API practice
+    res.send("Income Page")
   })
   .post((req, res) => {
     if (req.body.name && req.body.amount && req.body.date) {

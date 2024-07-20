@@ -6,7 +6,8 @@ const expenses = require("../data/expenses");
 router
   .route("/")
   .get((req, res) => {
-    res.json(expenses);
+    // res.json(expenses); // Keeping this here for future API practice
+    res.send("Expense Page");
   })
   .post((req, res) => {
     if (req.body.name && req.body.amount && req.body.date) {
@@ -53,5 +54,6 @@ router
     if (expense) res.json(expense);
     else next();
   });
+
 
 module.exports = router;
