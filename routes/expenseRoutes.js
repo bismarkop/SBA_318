@@ -29,6 +29,19 @@ router
     if (expense) res.json(expense);
     else next();
   })
+  .patch((req, res, next) => {
+    const expense = expenses.find((inc, i) => {
+      if (inc.id == req.params.id) {
+        for (const key in req.body) {
+          expenses[i][key] = req.body[key];
+        }
+        return true;
+      }
+    });
+
+    if (expense) res.json(expense);
+    else next();
+  })
   .delete((req, res, next) => {
     const expense = expenses.find((e, i) => {
       if (e.id == req.params.id) {
@@ -40,6 +53,5 @@ router
     if (expense) res.json(expense);
     else next();
   });
-
 
 module.exports = router;

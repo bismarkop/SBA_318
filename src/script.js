@@ -43,9 +43,6 @@ function renderList() {
               </svg> 
             </div>
             </div>
-
-            
-      
           `;
     list.appendChild(li);
   });

@@ -9,7 +9,7 @@ router
     res.json(incomes);
   })
   .post((req, res) => {
-    if (req.body.id && req.body.name && req.body.amount && req.body.date) {
+    if (req.body.name && req.body.amount && req.body.date) {
       const income = {
         id: incomes[incomes.length - 1].id + 1,
         name: req.body.name,
