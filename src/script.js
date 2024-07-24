@@ -1,4 +1,5 @@
 const transactions = JSON.parse(sessionStorage.getItem("transactions")) || [];
+
 const balance = document.getElementById("balance");
 const expense = document.getElementById("expense");
 const income = document.getElementById("income");
@@ -8,6 +9,10 @@ const amount = document.getElementById("amount");
 const date = document.getElementById("date");
 const list = document.getElementById("transactionList");
 const tranStatus = document.getElementById("status");
+
+// Transactions Page
+const transactions2 = JSON.parse(sessionStorage.getItem("transactions2")) || [];
+const list2 = document.getElementById("transactionList2");
 
 let formatter = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -68,6 +73,7 @@ function addTransaction(e) {
   saveTransaction();
   renderList();
   updateTotal();
+  // populateTrx()
 }
 
 function deleteTransaction(id) {
@@ -99,4 +105,8 @@ function updateTotal() {
   balance.textContent = formatter.format(balanceTotal).substring(1);
   income.textContent = formatter.format(incomeTotal);
   expense.textContent = formatter.format(expenseTotal * -1);
+}
+
+function populateTrx() {
+  transactions2.innerHTML = list2.value;
 }
