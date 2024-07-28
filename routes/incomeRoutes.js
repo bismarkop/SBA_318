@@ -5,10 +5,29 @@ const incomes = require("../data/incomes");
 
 router
   .route("/")
-  .get((req, res) => {
-    res.json(incomes); // Keeping this here for future API/application practice
-    // res.send("<h1>Income Page</h1>") // Come back here to create an Income HTML page 
+  .get((req, res, next) => {
+    const {
+      query: { filter, value },
+    } = req;
+
+    if (!filter && !value) {
+      return res.send(incomes);
+    }
+    if (filter && value) {
+      const result = incomes.filter((trx) => {
+        let check = trx[filter].includes(value);
+        if (check) {
+          return trx.name
+        }
+      })
+      
+      return res.send(result);
+    }
   })
+  // .get((req, res) => {
+  //   res.json(incomes); // Keeping this here for future API/application practice
+  //   // res.send("<h1>Income Page</h1>") // Come back here to create an Income HTML page 
+  // })
   .post((req, res) => {
     if (req.body.name && req.body.amount && req.body.date) {
       const income = {

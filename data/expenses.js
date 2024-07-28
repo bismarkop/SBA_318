@@ -1,19 +1,19 @@
 const expenses = [
     {
         id: 1,
-        name: "Groceries",
+        name: "groceries",
         amount: 200,
         date: "7/1/2024",
     },
     {
         id: 2,
-        name: "Movies",
+        name: "movies",
         amount: 40,
         date: "7/5/2024",
     },
     {
         id: 3,
-        name: "Seamless",
+        name: "seamless",
         amount: 50,
         date: "7/6/2024",
     }

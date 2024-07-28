@@ -6,7 +6,6 @@ const expenses = require("../data/expenses");
 router
   .route("/")
   .get((req, res, next) => {
-    console.log(req.query);
     const {
       query: { filter, value },
     } = req;
@@ -15,11 +14,13 @@ router
       return res.send(expenses);
     }
     if (filter && value) {
-      return res.send(
-        expenses.filter((trx) => {
-          trx[filter].includes(value);
-        })
-      );
+      const result = expenses.filter((trx) => {
+        let check = trx[filter].includes(value);
+        if (check) {
+          return trx.name
+        }
+      })
+      return res.send(result);
     }
   })
   // .get((req, res) => {
@@ -73,25 +74,5 @@ router
     else next();
   });
 
-// router
-//   .route("/:id?amount=200")
-//   .get((req, res, next) => {
-//     console.log(req.query)
-//     const { query: { filter, value } } = req
-
-//     if (!filter && !value) {
-//       return res.json(expenses)
-//     }
-//     if (filter && value) {
-//       return res.send(expenses.filter((trxName) => {
-//         trxName[filter].includes(value)
-//       }))};
-//   })
-// .get((req, res, next) => {
-//   console.log(req.query)
-//   const expense = expenses.find((e) => e.amount == req.query.amount);
-//   if (expense) res.json(expense);
-//   else next();
-// })
 
 module.exports = router;
