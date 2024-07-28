@@ -5,10 +5,27 @@ const expenses = require("../data/expenses");
 
 router
   .route("/")
-  .get((req, res) => {
-    // res.json(expenses); // Keeping this here for future API practice
-    res.send("Expense Page");
+  .get((req, res, next) => {
+    console.log(req.query);
+    const {
+      query: { filter, value },
+    } = req;
+
+    if (!filter && !value) {
+      return res.send(expenses);
+    }
+    if (filter && value) {
+      return res.send(
+        expenses.filter((trx) => {
+          trx[filter].includes(value);
+        })
+      );
+    }
   })
+  // .get((req, res) => {
+  //   res.json(expenses); // Keeping this here for future API/application practice
+  //   // res.send("<h1>Expense Page</h1>"); // Come back here to create an Expense HTML page
+  // })
   .post((req, res) => {
     if (req.body.name && req.body.amount && req.body.date) {
       const expense = {
@@ -26,6 +43,7 @@ router
 router
   .route("/:id")
   .get((req, res, next) => {
+    console.log(req.query);
     const expense = expenses.find((e) => e.id == req.params.id);
     if (expense) res.json(expense);
     else next();
@@ -55,5 +73,25 @@ router
     else next();
   });
 
+// router
+//   .route("/:id?amount=200")
+//   .get((req, res, next) => {
+//     console.log(req.query)
+//     const { query: { filter, value } } = req
+
+//     if (!filter && !value) {
+//       return res.json(expenses)
+//     }
+//     if (filter && value) {
+//       return res.send(expenses.filter((trxName) => {
+//         trxName[filter].includes(value)
+//       }))};
+//   })
+// .get((req, res, next) => {
+//   console.log(req.query)
+//   const expense = expenses.find((e) => e.amount == req.query.amount);
+//   if (expense) res.json(expense);
+//   else next();
+// })
 
 module.exports = router;
