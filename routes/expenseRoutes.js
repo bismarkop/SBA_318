@@ -16,6 +16,7 @@ router
     if (filter && value) {
       const result = expenses.filter((trx) => {
         let check = trx[filter].includes(value);
+        
         if (check) {
           return trx.name
         }

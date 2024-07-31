@@ -1,20 +1,20 @@
 const incomes = [
     {
-        id: 1,
+        id: "1",
         name: "Weekly Income",
-        amount: 3000,
+        amount: "3000",
         date: "7/5/2024",
     },
     {
-        id: 2,
+        id: "2",
         name: "Massage Client",
-        amount: 160,
+        amount: "160",
         date: "7/3/2024",
     },
     {
-        id: 3,
+        id: "3",
         name: "Weekly Income",
-        amount: 3000,
+        amount: "3000",
         date: "7/12/2024",
     }
 ]
